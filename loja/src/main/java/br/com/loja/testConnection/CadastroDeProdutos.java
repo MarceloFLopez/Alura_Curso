@@ -8,7 +8,7 @@ import br.com.loja.util.JPAUtil;
 public class CadastroDeProdutos {
 
 	public static void main(String[] args) {
-		Categoria categoria= new  Categoria(null, "CELULARES");
+		Categoria categoria= new  Categoria();
 
 		EntityManager em = JPAUtil.getEntityManager();
 		
@@ -22,7 +22,6 @@ public class CadastroDeProdutos {
 		
 		em.getTransaction().begin();
 		em.persist(p);
-		p.setNome("XPTO");
 		em.getTransaction().commit();
 		System.out.println(p);
 		em.close();
