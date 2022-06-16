@@ -10,9 +10,14 @@ public class TestConnection {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("loja");
 		EntityManager em = emf.createEntityManager();
-		System.out.println(em);
+		em.getTransaction().begin();
+		
+		
+		
+		
+		em.persist(obj);
+		em.getTransaction().commit();
 		em.close();
-		System.out.println(em);
 	}
 
 }
