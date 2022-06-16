@@ -13,15 +13,17 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "categorias")
-public class Categoria {
-
+@AllArgsConstructor
+@Table(name = "clientes")
+public class Cliente {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(length = 50)
 	private String nome;
+	
+	private String cpf;
 }

@@ -1,7 +1,7 @@
 package br.com.loja.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,10 +30,10 @@ public class Produto {
 	@Column(length = 50)
 	private String descricao;
 	
-	@Column(precision = 5,scale = 2)
+	@Column(precision = 7,scale = 2)
 	private BigDecimal preco;
 	
-	private LocalDate dataCadastro = LocalDate.now();
+	private LocalDateTime dataCadastro = LocalDateTime.now();
 	
 	@ManyToOne
 	private Categoria categorias;
