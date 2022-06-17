@@ -7,21 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "categorias")
 public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(length = 50)
 	private String nome;
 
@@ -38,6 +31,16 @@ public class Categoria {
 	}
 
 	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Categoria() {
+		super();
+	}
+
+	public Categoria(Long id, String nome) {
+		super();
+		this.id = id;
 		this.nome = nome;
 	}
 
@@ -64,6 +67,11 @@ public class Categoria {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Categoria [id=" + id + ", nome=" + nome + "]";
 	}
 
 }
