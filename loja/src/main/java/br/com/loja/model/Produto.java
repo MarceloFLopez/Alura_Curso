@@ -115,7 +115,6 @@ public class Produto {
 
 	public Produto(Long id, String nome, String descricao, BigDecimal preco, LocalDateTime dataCadastro,
 			Categoria categorias) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -125,9 +124,13 @@ public class Produto {
 	}
 
 	public Produto() {
-		super();
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
+				+ ", dataCadastro=" + dataCadastro + ", categorias=" + categorias + "]";
+	}
 	
 	
 }

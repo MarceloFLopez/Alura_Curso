@@ -19,6 +19,18 @@ public class Cliente {
 	private String nome;
 	
 	private String cpf;
+	
+
+	public Cliente() {
+		super();
+	}
+
+	public Cliente(Long id, String nome, String cpf) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+	}
 
 	public Long getId() {
 		return id;
@@ -67,17 +79,6 @@ public class Cliente {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public Cliente(Long id, String nome, String cpf) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-	}
-
-	public Cliente() {
-		super();
 	}
 
 	@Override

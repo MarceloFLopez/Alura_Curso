@@ -23,7 +23,10 @@ public class ProdutoDAO {
 	
 	// Atualizanddo objeto
 	public void atualizar(Produto produto) {
+		em.getTransaction().begin();
 		this.em.persist(produto);
+		em.getTransaction().commit();
+		
 	}
 	
 	// removendo objeto

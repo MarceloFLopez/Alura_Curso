@@ -1,25 +1,28 @@
 package br.com.loja.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "pedidos")
-public class Pedido {
+public class Pedido implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,21 +34,21 @@ public class Pedido {
 
 	@ManyToOne
 	private Cliente cliente;
+	
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	private List<ItemPedido> itens = new ArrayList<ItemPedido>(); 
 
 	public Pedido(Cliente clientes) {
 		this.cliente = clientes;
 	}
 
-	public Pedido(Long id, LocalDateTime dataCadastro, BigDecimal vavlor_toal, Cliente cliente) {
-		super();
-		this.id = id;
-		this.dataCadastro = dataCadastro;
-		this.vavlor_toal = vavlor_toal;
-		this.cliente = cliente;
+	public Pedido() {
+
 	}
 
-	public Pedido() {
-		super();
+	public void adicionarItem(ItemPedido item) {
+		item.setPedido(this);
+		this.itens.add(item);
 	}
 
 	public Long getId() {
