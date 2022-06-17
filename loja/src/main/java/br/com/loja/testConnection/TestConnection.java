@@ -12,10 +12,6 @@ public class TestConnection {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		
-		
-		
-		
-		em.persist(obj);
 		em.getTransaction().commit();
 		em.close();
 	}
