@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "pedidos")
-public class Pedido implements Serializable{
+public class Pedido implements Serializable {
 
 	/**
 	 * 
@@ -34,13 +34,6 @@ public class Pedido implements Serializable{
 
 	@ManyToOne
 	private Cliente cliente;
-	
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-	private List<ItemPedido> itens = new ArrayList<ItemPedido>(); 
-
-	public Pedido(Cliente clientes) {
-		this.cliente = clientes;
-	}
 
 	public Pedido() {
 
@@ -49,6 +42,13 @@ public class Pedido implements Serializable{
 	public void adicionarItem(ItemPedido item) {
 		item.setPedido(this);
 		this.itens.add(item);
+	}
+
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	private List<ItemPedido> itens = new ArrayList<ItemPedido>();
+
+	public Pedido(Cliente clientes) {
+		this.cliente = clientes;
 	}
 
 	public Long getId() {

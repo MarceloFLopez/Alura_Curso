@@ -15,13 +15,13 @@ public class ItemPedido {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; 
-	
+	private Long id; 	
 	private BigDecimal precoUnitario;
 	private Integer quantidade;
 	
 	@ManyToOne
 	private Pedido pedido;
+	
 	@ManyToOne
 	private Produto produto;
 	
