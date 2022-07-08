@@ -12,13 +12,10 @@ public class ClienteDAO {
 	public ClienteDAO(EntityManager em) {
 		this.em = em;
 	}
-	
+
 	// Adicionando um novo objeto
 	public void cadastrar(Cliente cliente) {
 		this.em.persist(cliente);
 	}
-	
 
-	
-	
 }
